@@ -14,6 +14,9 @@ SOURCES += \
     figure.cpp \
     lab1solver.cpp \
     lab2dock.cpp \
+    lab3dock.cpp \
+    line.cpp \
+    linedrawer.cpp \
     main.cpp \
     mainwindow.cpp \
     renderarea.cpp \
@@ -25,6 +28,9 @@ HEADERS += \
     figure.h \
     lab1solver.h \
     lab2dock.h \
+    lab3dock.h \
+    line.h \
+    linedrawer.h \
     mainwindow.h \
     renderarea.h \
     triangle.h

@@ -27,7 +27,7 @@ public:
 
 private:
     QWidget *multiWidget;
-    QGridLayout *grid = new QGridLayout;
+    QGridLayout *grid;
 
     QLabel *descriptionLabel;
     QPushButton *showFigureButton;

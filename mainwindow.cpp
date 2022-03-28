@@ -1,12 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-/*
-* TODO
-* случай с несколькими решениями
-* автоматическое масштабирование
-*/
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -25,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     renderArea = new RenderArea;
     setCentralWidget(renderArea);
     lab2Dock = new Lab2Dock(renderArea, this);
+    lab3Dock = new Lab3Dock(this);
 
     setNeededDocks();
 
@@ -435,6 +430,11 @@ void MainWindow::setNeededDocks()
 
     // lab_02
     addDockWidget(Qt::LeftDockWidgetArea, lab2Dock);
+
+    lab2Dock->hide();
+
+    // lab_03
+    addDockWidget(Qt::LeftDockWidgetArea, lab3Dock);
 
     // common
     addDockWidget(Qt::RightDockWidgetArea, scaleDock);

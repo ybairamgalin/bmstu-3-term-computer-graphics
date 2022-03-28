@@ -21,6 +21,7 @@
 #include "triangle.h"
 #include "lab1solver.h"
 #include "lab2dock.h"
+#include "lab3dock.h"
 
 #define MIN_DOCK_WIDTH 250
 
@@ -67,6 +68,7 @@ private:
     RenderArea *renderArea;
 
     Lab2Dock *lab2Dock;
+    Lab3Dock *lab3Dock;
 
     Lab1Solver lab1Solver;
 
