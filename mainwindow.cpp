@@ -21,6 +21,17 @@ MainWindow::MainWindow(QWidget *parent)
     lab2Dock = new Lab2Dock(renderArea, this);
     lab3Dock = new Lab3Dock(this);
 
+    Line *line = new Line(QPointF(0, 0), QPointF(100, 200), new LineDrawerLibFunc);
+    Line *CDALine = new Line (QPointF(0, 100), QPointF(100, 300), new LineDrawerCda);
+    Line *brFloat = new Line(QPointF(0, 200), QPointF(100, 400), new LineDrawerBresenhamFloat);
+    Line *brInt = new Line(QPointF(0, 300), QPointF(100, 500), new LineDrawerBresenhamInt);
+
+    renderArea->addMyLine(line);
+    renderArea->addMyLine(CDALine);
+    renderArea->addMyLine(brFloat);
+    renderArea->addMyLine(brInt);
+
+
     setNeededDocks();
 
     connect(addPointButton, SIGNAL(released()), this, SLOT(onAddPointButtonClick()));
@@ -438,4 +449,6 @@ void MainWindow::setNeededDocks()
 
     // common
     addDockWidget(Qt::RightDockWidgetArea, scaleDock);
+
+    scaleDock->hide();
 }

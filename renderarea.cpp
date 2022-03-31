@@ -36,6 +36,21 @@ void RenderArea::setDelta(QPoint newPoint)
     update();
 }
 
+void RenderArea::drawMyLines()
+{
+    QPoint delta = curDeltaVector + oldDeltaVector;
+
+    Line::setDelta(delta);
+    Line::setScale(scaleFactor);
+
+    QPainter painter(this);
+    painter.translate(toCanvasCoords(delta));
+    painter.scale(1, -1);
+
+    for (size_t i = 0; i < myLines.size(); i++)
+        myLines[i]->draw(painter, QColor(Qt::red));
+}
+
 void RenderArea::paintEvent(QPaintEvent*)
 {
     QPoint delta = curDeltaVector + oldDeltaVector;
@@ -78,6 +93,7 @@ void RenderArea::paintEvent(QPaintEvent*)
     }
 
     drawFigures();
+    drawMyLines();
 }
 
 void RenderArea::drawBg(QPoint delta)
@@ -581,4 +597,16 @@ bool RenderArea::figureIsShown()
         return true;
 
     return false;
+}
+
+void RenderArea::addMyLine(Line *myLine)
+{
+    myLines.push_back(myLine);
+    update();
+}
+
+void RenderArea::clearMyLines()
+{
+    myLines.clear();
+    update();
 }

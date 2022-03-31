@@ -18,6 +18,7 @@
 #include "figure.h"
 #include "arc.h"
 #include "ellipse.h"
+#include "line.h"
 
 #ifndef EPS
 #define EPS 1e-7
@@ -52,6 +53,9 @@ public:
     void addLine(const QLineF line);
     void clearLines();
 
+    void addMyLine(Line *myLine);
+    void clearMyLines();
+
     bool figureIsShown();
     void showFigure();
     void clearFigures();
@@ -79,7 +83,8 @@ private:
     std::vector<QPointF> bluePoints;
     std::vector<QLineF> lines;
     std::vector<QRectF> ellipces;
-    std::vector <Figure> figures;
+    std::vector<Figure> figures;
+    std::vector<Line*> myLines;
 
     double scaleFactor = 20;
     // multiple to set up grid unit as
@@ -90,6 +95,7 @@ private:
 
     void drawBg(QPoint delta);
     void drawFigures();
+    void drawMyLines();
 
     // two consts should eq to 1 when multiplied
     const double scaleUpMultiple = 1.25;

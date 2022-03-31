@@ -22,6 +22,7 @@
 #include "lab1solver.h"
 #include "lab2dock.h"
 #include "lab3dock.h"
+#include "linedrawer.h"
 
 #define MIN_DOCK_WIDTH 250
 
