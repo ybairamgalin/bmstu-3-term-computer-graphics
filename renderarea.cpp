@@ -45,7 +45,7 @@ void RenderArea::drawMyLines()
 
     QPainter painter(this);
     painter.translate(toCanvasCoords(delta));
-    painter.scale(1, -1);
+    painter.scale(2, -2);
 
     for (size_t i = 0; i < myLines.size(); i++)
         myLines[i]->draw(painter, QColor(Qt::red));

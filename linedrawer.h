@@ -45,12 +45,19 @@ class LineDrawerBresenhamSmooth : public LineDrawer
 {
     void drawLine(QPainter &painter, QPointF p1,
                   QPointF p2, QPen pen) override;
+
+private:
+    int sign(const int x);
 };
 
 class LineDrawerWu : public LineDrawer
 {
     void drawLine(QPainter &painter, QPointF p1,
                   QPointF p2, QPen pen) override;
+
+private:
+    void setOpacity(QPainter &painter, int opacity);
+    int mapOpacity(const double x);
 };
 
 #endif // LINEDRAWER_H

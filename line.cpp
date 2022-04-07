@@ -18,7 +18,9 @@ void Line::setDrawer(LineDrawer *drawer)
 
 void Line::draw(QPainter &painter, QColor color)
 {
-    drawer->drawLine(painter, p1, p2, QPen(color));
+    QPen pen(QColor(255, 0, 0, 255));
+
+    drawer->drawLine(painter, p1, p2, pen);
 }
 
 void Line::setDelta(QPoint delta)
