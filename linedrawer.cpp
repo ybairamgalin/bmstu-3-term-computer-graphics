@@ -1,5 +1,9 @@
 #include "linedrawer.h"
 
+// algs taken from
+// Mathematical Elements for Computer Graphics, Davif F. Rogers
+// https://ru.wikipedia.org/wiki/Алгоритм_Ву
+
 int LineDrawerBresenhamSmooth::sign(const int x)
 {
     if (x > 0)
