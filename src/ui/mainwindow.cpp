@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(renderArea);
     lab2Dock = new Lab2Dock(renderArea, this);
     lab3Dock = new Lab3Dock(this);
+    lab4Dock = new Lab4Dock(this);
 
 
     setNeededDocks();
@@ -436,6 +437,10 @@ void MainWindow::setNeededDocks()
 
     // lab_03
     addDockWidget(Qt::LeftDockWidgetArea, lab3Dock);
+
+    // lab_04
+
+    addDockWidget(Qt::LeftDockWidgetArea, lab4Dock);
 
     // common
     addDockWidget(Qt::RightDockWidgetArea, scaleDock);
