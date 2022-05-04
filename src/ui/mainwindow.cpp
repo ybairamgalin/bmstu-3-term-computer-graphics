@@ -21,20 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     lab2Dock = new Lab2Dock(renderArea, this);
     lab3Dock = new Lab3Dock(this);
 
-    Line *line = new Line(QPointF(0, 0), QPointF(100, 50), new LineDrawerLibFunc);
-    Line *CDALine = new Line (QPointF(0, 10), QPointF(100, 60), new LineDrawerCda);
-    Line *brFloat = new Line(QPointF(0, 20), QPointF(100, 70), new LineDrawerBresenhamFloat);
-    Line *brInt = new Line(QPointF(0, 30), QPointF(100, 80), new LineDrawerBresenhamInt);
-    Line *brSmooth = new Line(QPointF(0, 40), QPointF(100, 90), new LineDrawerBresenhamSmooth);
-    Line *wu = new Line(QPointF(0, 50), QPointF(100, 100), new LineDrawerWu);
-
-    renderArea->addMyLine(line);
-    renderArea->addMyLine(CDALine);
-    renderArea->addMyLine(brFloat);
-    renderArea->addMyLine(brInt);
-    renderArea->addMyLine(brSmooth);
-    renderArea->addMyLine(wu);
-
 
     setNeededDocks();
 

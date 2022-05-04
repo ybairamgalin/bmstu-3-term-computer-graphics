@@ -47,6 +47,11 @@ private:
 
     void createFields();
     void placeFields();
+
+private slots:
+    void onDrawLineButtonClick();
+    void onDrawSunButtonClick();
+    void onClearAllButtonClick();
 };
 
 #endif // LAB3DOCK_H

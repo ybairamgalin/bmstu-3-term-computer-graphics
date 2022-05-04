@@ -17,9 +17,7 @@ int LineDrawerBresenhamSmooth::sign(const int x)
 
 int LineDrawerWu::mapOpacity(const double x)
 {
-    int opacity = (int)(x * 255);
-
-    return opacity;
+    return (int)(x * 255);
 }
 
 void LineDrawerWu::setOpacity(QPainter &painter, int opacity)

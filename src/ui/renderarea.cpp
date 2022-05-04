@@ -13,10 +13,7 @@ RenderArea::RenderArea(QWidget *parent) : QWidget{parent}
         canvasSize = QSize(1000, 600);
 }
 
-RenderArea::~RenderArea()
-{
-
-}
+RenderArea::~RenderArea() { }
 
 void RenderArea::resize(QSize newSize)
 {

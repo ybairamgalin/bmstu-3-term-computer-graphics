@@ -12,7 +12,8 @@ class Ellipse
 public:
     Ellipse(QPointF p1, QPointF p2, QPointF p3,
             QPointF p4, QPointF p5);
-    Ellipse& operator=(const Ellipse &);
+    Ellipse(const Ellipse &) = default;
+    Ellipse &operator=(const Ellipse &);
     Ellipse(QPointF center, double rx, double ry);
     QPointF p1();
     QPointF p2();

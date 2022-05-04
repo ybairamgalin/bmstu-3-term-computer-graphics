@@ -9,7 +9,7 @@
 #include <QGridLayout>
 #include <QMessageBox>
 
-#include <math.h>
+#include <cmath>
 
 #include "renderarea.h"
 

@@ -74,9 +74,29 @@ Lab3Dock::Lab3Dock(QWidget *parent) : QDockWidget{parent}
 
     createFields();
     placeFields();
+
+    connect(drawLineButton, SIGNAL(released()), this, SLOT(onDrawLineButtonClick()));
+    connect(drawSunButton, SIGNAL(released()), this, SLOT(onDrawSunButtonClick()));
+    connect(clearAllButton, SIGNAL(released()), this, SLOT(onClearAllButtonClick()));
 }
 
 Lab3Dock::~Lab3Dock()
 {
 
+}
+
+
+void Lab3Dock::onDrawLineButtonClick()
+{
+    qDebug() << "ADD";
+}
+
+void Lab3Dock::onDrawSunButtonClick()
+{
+    qDebug() << "SUN";
+}
+
+void Lab3Dock::onClearAllButtonClick()
+{
+    qDebug() << "CLEAR";
 }

@@ -16,7 +16,7 @@ void Line::setDrawer(LineDrawer *drawer)
     this->drawer = drawer;
 }
 
-void Line::draw(QPainter &painter, QColor color)
+void Line::draw(QPainter &painter, QColor)
 {
     QPen pen(QColor(255, 0, 0, 255));
 
