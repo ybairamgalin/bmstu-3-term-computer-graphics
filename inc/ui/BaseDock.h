@@ -16,7 +16,7 @@ public:
     explicit BaseDock(Invoker *invoker, QWidget *parent = nullptr);
 
 protected:
-    int maxHeight = 650;
+    int maxHeight = 950;
 
     QGridLayout *grid;
     Invoker *invoker;

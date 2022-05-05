@@ -61,6 +61,9 @@ private:
 
 private slots:
     void onDrawEllipseButtonClick();
+    void onDrawEllipseSetButtonClick();
+    void onDrawCircleButtonClick();
+    void onUndoButtonClick();
 };
 
 #endif // LAB4DOCK_H

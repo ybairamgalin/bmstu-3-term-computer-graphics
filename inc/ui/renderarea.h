@@ -70,6 +70,7 @@ public:
     size_t pointsSz();
 
     void add(const IDrawable *element);
+    void pop();
 
     Figure &figure();
 

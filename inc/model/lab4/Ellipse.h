@@ -14,9 +14,7 @@ namespace Lab4
     public:
         Ellipse(int x, int y, int rx, int ry, EllipseDrawer *drawer,
                 Color color);
-
         Ellipse(const Ellipse &other) = default;
-
         Ellipse(Ellipse &&) = default;
 
         Ellipse &operator=(const Ellipse &) = default;
@@ -27,6 +25,7 @@ namespace Lab4
         [[nodiscard]] int getY() const;
         [[nodiscard]] int getRx() const;
         [[nodiscard]] int getRy() const;
+        [[nodiscard]] Color getColor() const;
     private:
         EllipseDrawer *drawer;
         Color color;

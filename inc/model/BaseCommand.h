@@ -10,7 +10,7 @@ class BaseCommand
 public:
     virtual ~BaseCommand() = default;
     virtual void execute() const = 0;
-//    virtual void undo() const = 0;
+    virtual void undo() const = 0;
 protected:
 
 };

@@ -26,6 +26,21 @@ namespace Lab4
     {
         void drawEllipse(Ellipse ellipse, QPainter &drawer) const override;
     };
+
+    class EllipseDrawerBresenham : public EllipseDrawer
+    {
+        void drawEllipse(Ellipse ellipse, QPainter &drawer) const override;
+    };
+
+    class EllipseDrawerMidPoint : public EllipseDrawer
+    {
+        void drawEllipse(Ellipse ellipse, QPainter &drawer) const override;
+    };
+
+    class EllipseDrawerLib : public EllipseDrawer
+    {
+        void drawEllipse(Ellipse ellipse, QPainter &drawer) const override;
+    };
 }
 
 #endif // ELLIPSEDRAWER_H

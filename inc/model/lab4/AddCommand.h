@@ -21,6 +21,11 @@ namespace Lab4
             canvas->add(ellipse);
         }
 
+        void undo() const override
+        {
+            canvas->pop();
+        }
+
     private:
         Lab4::Ellipse *ellipse;
         RenderArea *canvas;

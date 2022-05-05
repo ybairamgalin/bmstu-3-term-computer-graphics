@@ -42,12 +42,17 @@ struct Color
     Color(Color &&) = default;
     Color& operator=(const Color &) = default;
 
+    explicit operator QColor() const
+    {
+        return QColor(r, g, b, a);
+    }
+
     static Color fromIndex(int index)
     {
         switch (index)
         {
             case 0:
-                return Color(255, 255, 255, 255);
+                return Color(0, 0, 0, 255);
             case 1:
                 return Color(255, 0, 0, 255);
             case 2:
@@ -55,9 +60,9 @@ struct Color
             case 3:
                 return Color(0, 0, 255, 255);
             case 4:
-                return Color(0, 0, 0, 255);
-            default:
                 return Color(255, 255, 255, 255);
+            default:
+                return Color(0, 0, 0, 255);
         }
     }
 

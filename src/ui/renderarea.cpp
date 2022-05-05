@@ -620,3 +620,9 @@ void RenderArea::add(const IDrawable *element)
     drawable.push_back(element);
     update();
 }
+
+void RenderArea::pop()
+{
+    drawable.pop_back();
+    update();
+}

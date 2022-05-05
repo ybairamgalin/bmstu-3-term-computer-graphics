@@ -96,7 +96,7 @@ private:
     void keyPressEvent(QKeyEvent *e) override;
 
     const int startWidth = 1200;
-    const int startHeight = 800;
+    const int startHeight = 1000;
 
 private slots:
     void onAddPointButtonClick();

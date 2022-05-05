@@ -28,3 +28,8 @@ int Lab4::Ellipse::getRy() const
 {
     return ry;
 }
+
+Color Lab4::Ellipse::getColor() const
+{
+    return color;
+}
