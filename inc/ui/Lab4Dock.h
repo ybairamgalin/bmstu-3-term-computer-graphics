@@ -55,6 +55,8 @@ private:
     QPushButton *undoButton;
     QPushButton *clearAllButton;
 
+    QPushButton *showTimeButton;
+
     void createFields();
     void placeFields();
     void connectHandlers();
@@ -64,6 +66,7 @@ private slots:
     void onDrawEllipseSetButtonClick();
     void onDrawCircleButtonClick();
     void onUndoButtonClick();
+    void onTimeButtonCLick();
 };
 
 #endif // LAB4DOCK_H

@@ -13,7 +13,7 @@ namespace Lab4
     {
     public:
         Ellipse(int x, int y, int rx, int ry, EllipseDrawer *drawer,
-                Color color);
+                Color color, bool draw = true);
         Ellipse(const Ellipse &other) = default;
         Ellipse(Ellipse &&) = default;
 
@@ -26,6 +26,7 @@ namespace Lab4
         [[nodiscard]] int getRx() const;
         [[nodiscard]] int getRy() const;
         [[nodiscard]] Color getColor() const;
+        [[nodiscard]] bool isDrawable() const;
     private:
         EllipseDrawer *drawer;
         Color color;
@@ -34,6 +35,8 @@ namespace Lab4
         int y;
         int rx;
         int ry;
+
+        bool drawable;
     };
 }
 

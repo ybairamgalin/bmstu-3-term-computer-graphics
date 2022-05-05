@@ -22,7 +22,10 @@ Lab4::EllipseDrawer *Lab4::EllipseDrawer::fromIndex(int index)
 void Lab4::EllipseDrawerCanonical::drawEllipse(Lab4::Ellipse ellipse,
                                                QPainter &drawer) const
 {
-    drawer.setPen(QColor(ellipse.getColor()));
+    if (ellipse.isDrawable())
+        drawer.setPen(QColor(ellipse.getColor()));
+
+    bool drawRequired = ellipse.isDrawable();
 
     int a = ellipse.getRx();
     int b = ellipse.getRy();
@@ -41,10 +44,13 @@ void Lab4::EllipseDrawerCanonical::drawEllipse(Lab4::Ellipse ellipse,
         int y = static_cast<int>(std::lround(std::sqrt(b * b -
                 (x - startX) * (x - startX) * (bSqr / aSqr))) + startY);
 
-        drawer.drawPoint(x, y);
-        drawer.drawPoint(2 * startX - x, y);
-        drawer.drawPoint(x, 2 * startY - y);
-        drawer.drawPoint(2 * startX - x, 2 * startY - y);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x, y);
+            drawer.drawPoint(2 * startX - x, y);
+            drawer.drawPoint(x, 2 * startY - y);
+            drawer.drawPoint(2 * startX - x, 2 * startY - y);
+        }
     }
 
     int endY = startY + static_cast<int>(double(b) /
@@ -55,17 +61,22 @@ void Lab4::EllipseDrawerCanonical::drawEllipse(Lab4::Ellipse ellipse,
         int x = static_cast<int>(std::lround(std::sqrt(a * a - (y - startY) *
                 (y - startY) * (aSqr / bSqr))) + startX);
 
-        drawer.drawPoint(x, y);
-        drawer.drawPoint(2 * startX - x, y);
-        drawer.drawPoint(x, 2 * startY - y);
-        drawer.drawPoint(2 * startX - x, 2 * startY - y);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x, y);
+            drawer.drawPoint(2 * startX - x, y);
+            drawer.drawPoint(x, 2 * startY - y);
+            drawer.drawPoint(2 * startX - x, 2 * startY - y);
+        }
     }
 }
 
 void Lab4::EllipseDrawerParametric::drawEllipse(Lab4::Ellipse ellipse,
                                                 QPainter &drawer) const
 {
-    drawer.setPen(QColor(ellipse.getColor()));
+    if (ellipse.isDrawable())
+        drawer.setPen(QColor(ellipse.getColor()));
+    bool drawRequired = ellipse.isDrawable();
 
     int xc = ellipse.getX();
     int yc = ellipse.getY();
@@ -79,17 +90,22 @@ void Lab4::EllipseDrawerParametric::drawEllipse(Lab4::Ellipse ellipse,
         int x = static_cast<int>(std::lround(std::cos(t) * a) + xc);
         int y = static_cast<int>(std::lround(std::sin(t) * b) + yc);
 
-        drawer.drawPoint(x, y);
-        drawer.drawPoint(2 * xc - x, y);
-        drawer.drawPoint(x, 2 * yc - y);
-        drawer.drawPoint(2 * xc - x, 2 * yc - y);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x, y);
+            drawer.drawPoint(2 * xc - x, y);
+            drawer.drawPoint(x, 2 * yc - y);
+            drawer.drawPoint(2 * xc - x, 2 * yc - y);
+        }
     }
 }
 
 void Lab4::EllipseDrawerBresenham::drawEllipse(Lab4::Ellipse ellipse,
                                                QPainter &drawer) const
 {
-    drawer.setPen(QColor(ellipse.getColor()));
+    if (ellipse.isDrawable())
+        drawer.setPen(QColor(ellipse.getColor()));
+    bool drawRequired = ellipse.isDrawable();
 
     int a = ellipse.getRx();
     int b = ellipse.getRy();
@@ -106,10 +122,13 @@ void Lab4::EllipseDrawerBresenham::drawEllipse(Lab4::Ellipse ellipse,
     int x = 0;
     int y = b;
 
-    drawer.drawPoint(x + startX, y + startY);
-    drawer.drawPoint(-x + startX, y + startY);
-    drawer.drawPoint(x + startX, -y + startY);
-    drawer.drawPoint(-x + startX, -y + startY);
+    if (drawRequired)
+    {
+        drawer.drawPoint(x + startX, y + startY);
+        drawer.drawPoint(-x + startX, y + startY);
+        drawer.drawPoint(x + startX, -y + startY);
+        drawer.drawPoint(-x + startX, -y + startY);
+    }
 
     int delta = 4 * bSqr * (x + 1) * (x + 1) +
                 aSqr * (2 * y - 1) * (2 * y - 1) -
@@ -125,10 +144,13 @@ void Lab4::EllipseDrawerBresenham::drawEllipse(Lab4::Ellipse ellipse,
             --y;
         }
 
-        drawer.drawPoint(x + startX, y + startY);
-        drawer.drawPoint(-x + startX, y + startY);
-        drawer.drawPoint(x + startX, -y + startY);
-        drawer.drawPoint(-x + startX, -y + startY);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x + startX, y + startY);
+            drawer.drawPoint(-x + startX, y + startY);
+            drawer.drawPoint(x + startX, -y + startY);
+            drawer.drawPoint(-x + startX, -y + startY);
+        }
     }
 
     x = a;
@@ -148,17 +170,22 @@ void Lab4::EllipseDrawerBresenham::drawEllipse(Lab4::Ellipse ellipse,
             --x;
         }
 
-        drawer.drawPoint(x + startX, y + startY);
-        drawer.drawPoint(-x + startX, y + startY);
-        drawer.drawPoint(x + startX, -y + startY);
-        drawer.drawPoint(-x + startX, -y + startY);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x + startX, y + startY);
+            drawer.drawPoint(-x + startX, y + startY);
+            drawer.drawPoint(x + startX, -y + startY);
+            drawer.drawPoint(-x + startX, -y + startY);
+        }
     }
 }
 
 void Lab4::EllipseDrawerMidPoint::drawEllipse(Lab4::Ellipse ellipse,
                                               QPainter &drawer) const
 {
-    drawer.setPen(QColor(ellipse.getColor()));
+    if (ellipse.isDrawable())
+        drawer.setPen(QColor(ellipse.getColor()));
+    bool drawRequired = ellipse.isDrawable();
 
     int a = ellipse.getRx();
     int b = ellipse.getRy();
@@ -175,10 +202,13 @@ void Lab4::EllipseDrawerMidPoint::drawEllipse(Lab4::Ellipse ellipse,
     int x = 0;
     int y = b;
 
-    drawer.drawPoint(x + startX, y + startY);
-    drawer.drawPoint(-x + startX, y + startY);
-    drawer.drawPoint(x + startX, -y + startY);
-    drawer.drawPoint(-x + startX, -y + startY);
+    if (drawRequired)
+    {
+        drawer.drawPoint(x + startX, y + startY);
+        drawer.drawPoint(-x + startX, y + startY);
+        drawer.drawPoint(x + startX, -y + startY);
+        drawer.drawPoint(-x + startX, -y + startY);
+    }
 
     int delta = 4 * bSqr * (x + 1) * (x + 1) +
                 aSqr * (2 * y - 1) * (2 * y - 1) -
@@ -194,10 +224,13 @@ void Lab4::EllipseDrawerMidPoint::drawEllipse(Lab4::Ellipse ellipse,
             --y;
         }
 
-        drawer.drawPoint(x + startX, y + startY);
-        drawer.drawPoint(-x + startX, y + startY);
-        drawer.drawPoint(x + startX, -y + startY);
-        drawer.drawPoint(-x + startX, -y + startY);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x + startX, y + startY);
+            drawer.drawPoint(-x + startX, y + startY);
+            drawer.drawPoint(x + startX, -y + startY);
+            drawer.drawPoint(-x + startX, -y + startY);
+        }
     }
 
     x = a;
@@ -217,17 +250,21 @@ void Lab4::EllipseDrawerMidPoint::drawEllipse(Lab4::Ellipse ellipse,
             --x;
         }
 
-        drawer.drawPoint(x + startX, y + startY);
-        drawer.drawPoint(-x + startX, y + startY);
-        drawer.drawPoint(x + startX, -y + startY);
-        drawer.drawPoint(-x + startX, -y + startY);
+        if (drawRequired)
+        {
+            drawer.drawPoint(x + startX, y + startY);
+            drawer.drawPoint(-x + startX, y + startY);
+            drawer.drawPoint(x + startX, -y + startY);
+            drawer.drawPoint(-x + startX, -y + startY);
+        }
     }
 }
 
 void Lab4::EllipseDrawerLib::drawEllipse(Lab4::Ellipse ellipse,
                                          QPainter &drawer) const
 {
-    drawer.setPen(QColor(ellipse.getColor()));
+    if (ellipse.isDrawable())
+        drawer.setPen(QColor(ellipse.getColor()));
 
     drawer.drawEllipse(ellipse.getX() - ellipse.getRx(),
                        ellipse.getY() - ellipse.getRy(),

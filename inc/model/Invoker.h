@@ -12,6 +12,7 @@
 #include "lab4/EllipseSet.h"
 #include "lab4/Circle.h"
 #include "lab4/EllipseDrawer.h"
+#include "lab4/TimeCommand.h"
 #include "renderarea.h"
 
 class Invoker
@@ -53,6 +54,12 @@ public:
         command = new Lab4::AddEllipseCommand(ellipses, canvas);
         command->execute();
         doneCommands.push_back(command);
+    }
+
+    void measureTime()
+    {
+        command = new Lab4::TimeCommand();
+        command->execute();
     }
 
     void undo()

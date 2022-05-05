@@ -70,6 +70,8 @@ void Lab4Dock::createFields()
 
     undoButton = new QPushButton("Назад");
     clearAllButton = new QPushButton("Очистить");
+
+    showTimeButton = new QPushButton("Замерить время");
 }
 
 void Lab4Dock::placeFields()
@@ -103,6 +105,7 @@ void Lab4Dock::placeFields()
     grid->addWidget(drawEllipseSetButton);
     grid->addWidget(undoButton);
     grid->addWidget(clearAllButton);
+    grid->addWidget(showTimeButton);
 }
 
 void Lab4Dock::connectHandlers()
@@ -115,6 +118,8 @@ void Lab4Dock::connectHandlers()
             this, SLOT(onDrawCircleButtonClick()));
     connect(undoButton, SIGNAL(released()),
             this, SLOT(onUndoButtonClick()));
+    connect(showTimeButton, SIGNAL(released()),
+            this, SLOT(onTimeButtonCLick()));
 }
 
 void Lab4Dock::onDrawEllipseButtonClick()
@@ -185,4 +190,9 @@ void Lab4Dock::onDrawCircleButtonClick()
 void Lab4Dock::onUndoButtonClick()
 {
     invoker->undo();
+}
+
+void Lab4Dock::onTimeButtonCLick()
+{
+    invoker->measureTime();
 }

@@ -1,8 +1,9 @@
 #include "lab4/Ellipse.h"
 
 Lab4::Ellipse::Ellipse(int x, int y, int rx, int ry,  EllipseDrawer *drawer,
-                       Color color) :
-        drawer(drawer), color(color), x(x), y(y), rx(rx), ry(ry) { }
+                       Color color, bool draw) :
+        drawer(drawer), color(color), x(x), y(y), rx(rx), ry(ry),
+        drawable(draw) { }
 
 void Lab4::Ellipse::draw(QPainter &painter) const
 {
@@ -32,4 +33,9 @@ int Lab4::Ellipse::getRy() const
 Color Lab4::Ellipse::getColor() const
 {
     return color;
+}
+
+bool Lab4::Ellipse::isDrawable() const
+{
+    return drawable;
 }
