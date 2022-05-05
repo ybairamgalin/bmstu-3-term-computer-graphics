@@ -91,6 +91,13 @@ void RenderArea::paintEvent(QPaintEvent*)
 
     drawFigures();
     drawMyLines();
+
+    QPainter newPainter(this);
+    newPainter.translate(toCanvasCoords(delta));
+    newPainter.scale(1, -1);
+
+    for (const auto &element: drawable)
+        element->draw(newPainter);
 }
 
 void RenderArea::drawBg(QPoint delta)
@@ -605,5 +612,11 @@ void RenderArea::addMyLine(Line *myLine)
 void RenderArea::clearMyLines()
 {
     myLines.clear();
+    update();
+}
+
+void RenderArea::add(const IDrawable *element)
+{
+    drawable.push_back(element);
     update();
 }

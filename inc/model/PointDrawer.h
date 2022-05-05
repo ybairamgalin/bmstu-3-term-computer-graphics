@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include <QColor>
+#include <QDebug>
 #include <string>
 
 class ColorException : std::exception
@@ -41,26 +42,45 @@ struct Color
     Color(Color &&) = default;
     Color& operator=(const Color &) = default;
 
+    static Color fromIndex(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return Color(255, 255, 255, 255);
+            case 1:
+                return Color(255, 0, 0, 255);
+            case 2:
+                return Color(0, 255, 0, 255);
+            case 3:
+                return Color(0, 0, 255, 255);
+            case 4:
+                return Color(0, 0, 0, 255);
+            default:
+                return Color(255, 255, 255, 255);
+        }
+    }
+
     int r;
     int g;
     int b;
     int a;
 };
 
-class PointDrawer
+class [[maybe_unused]] PointDrawer
 {
 public:
-    explicit PointDrawer(QPainter *painter) : painter(painter) { };
+    explicit PointDrawer(QPainter &painter) : painter(painter) { };
     PointDrawer(const PointDrawer &) = default;
     PointDrawer(PointDrawer &&) noexcept = default;
 
     void operator()(int x, int y, Color color) const
     {
-        painter->setPen(QColor(color.r, color.g, color.b, color.a));
-        painter->drawPoint(x, y);
+        painter.setPen(QColor(color.r, color.g, color.b, color.a));
+        painter.drawPoint(x, y);
     }
 private:
-    QPainter *painter;
+    QPainter &painter;
 };
 
 #endif //LAB_01_POINTDRAWER_H

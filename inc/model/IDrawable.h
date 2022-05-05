@@ -1,10 +1,12 @@
 #ifndef IDRAWABLE_H
 #define IDRAWABLE_H
 
+#include <PointDrawer.h>
+
 class IDrawable
 {
-protected:
-    virtual void draw() const = 0;
+public:
+    virtual void draw(QPainter &) const { };
 };
 
 #endif // IDRAWABLE_H

@@ -19,6 +19,7 @@
 #include "arc.h"
 #include "ellipse.h"
 #include "line.h"
+#include "IDrawable.h"
 
 #ifndef EPS
 #define EPS 1e-7
@@ -68,6 +69,8 @@ public:
     void scaleDown();
     size_t pointsSz();
 
+    void add(const IDrawable *element);
+
     Figure &figure();
 
 protected:
@@ -85,6 +88,8 @@ private:
     std::vector<QRectF> ellipces;
     std::vector<Figure> figures;
     std::vector<Line*> myLines;
+
+    std::vector<const IDrawable*> drawable;
 
     double scaleFactor = 20;
     // multiple to set up grid unit as

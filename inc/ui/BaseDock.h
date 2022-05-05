@@ -6,17 +6,20 @@
 
 #include <memory>
 
+#include "Invoker.h"
+
 class BaseDock : public QDockWidget
 {
     Q_OBJECT
 
 public:
-    explicit BaseDock(QWidget *parent = nullptr);
+    explicit BaseDock(Invoker *invoker, QWidget *parent = nullptr);
 
 protected:
     int maxHeight = 650;
 
     QGridLayout *grid;
+    Invoker *invoker;
 private:
     QWidget *multiWidget;
 };

@@ -24,6 +24,7 @@
 #include "lab3dock.h"
 #include "Lab4Dock.h"
 #include "linedrawer.h"
+#include "Invoker.h"
 
 #define MIN_DOCK_WIDTH 250
 
@@ -73,6 +74,7 @@ private:
     Lab3Dock *lab3Dock;
     Lab4Dock *lab4Dock;
 
+    Invoker *invoker;
 
     Lab1Solver lab1Solver;
 

@@ -1,6 +1,7 @@
 #include "BaseDock.h"
 
-BaseDock::BaseDock(QWidget *parent) : QDockWidget(parent)
+BaseDock::BaseDock(Invoker *invoker, QWidget *parent) :
+        QDockWidget(parent), invoker(invoker)
 {
     multiWidget = new QWidget();
     multiWidget->setMaximumHeight(maxHeight);

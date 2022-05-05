@@ -1,6 +1,30 @@
 #include "lab4/Ellipse.h"
 
-void Lab4::Ellipse::draw() const
+Lab4::Ellipse::Ellipse(int x, int y, int rx, int ry,  EllipseDrawer *drawer,
+                       Color color) :
+        drawer(drawer), color(color), x(x), y(y), rx(rx), ry(ry) { }
+
+void Lab4::Ellipse::draw(QPainter &painter) const
 {
-    drawPoint(1, 1, Color(255, 255, 255, 1));
+    drawer->drawEllipse(*this, painter);
+}
+
+int Lab4::Ellipse::getX() const
+{
+    return x;
+}
+
+int Lab4::Ellipse::getY() const
+{
+    return y;
+}
+
+int Lab4::Ellipse::getRx() const
+{
+    return rx;
+}
+
+int Lab4::Ellipse::getRy() const
+{
+    return ry;
 }
