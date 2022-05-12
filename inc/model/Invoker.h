@@ -13,15 +13,24 @@
 #include "lab4/Circle.h"
 #include "lab4/EllipseDrawer.h"
 #include "lab4/TimeCommand.h"
+#include "lab5/AddPointCommand.h"
+#include "lab5/AddPolyCommand.h"
+#include "lab5/PolygonSet.h"
 #include "renderarea.h"
 
 class Invoker
 {
     std::vector<BaseCommand *> doneCommands;
     BaseCommand *command = nullptr;
+
     RenderArea *canvas;
+    Lab5::PolygonSet *polygons;
 public:
-    explicit Invoker(RenderArea *canvas) : canvas(canvas) { };
+    explicit Invoker(RenderArea *canvas) : canvas(canvas)
+    {
+        polygons = new Lab5::PolygonSet();
+        canvas->add(polygons);
+    };
 
     void addEllipse(int x, int y, int a, int b, int colIndex, int algInd)
     {
@@ -69,6 +78,23 @@ public:
 
         doneCommands[doneCommands.size() - 1]->undo();
         doneCommands.pop_back();
+    }
+
+    void undo_all()
+    {
+        while(!doneCommands.empty()) undo();
+
+        canvas->update();
+    }
+
+    void addPoint(int x, int y)
+    {
+        command = new Lab5::AddMousePoint(x, y, *polygons);
+        command->execute();
+        doneCommands.push_back(command);
+        canvas->update();
+
+
     }
 
     void showWarning(const QString &str) const

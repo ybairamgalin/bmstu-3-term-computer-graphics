@@ -23,6 +23,7 @@
 #include "lab2dock.h"
 #include "lab3dock.h"
 #include "Lab4Dock.h"
+#include "Lab5Dock.h"
 #include "linedrawer.h"
 #include "Invoker.h"
 
@@ -73,6 +74,7 @@ private:
     Lab2Dock *lab2Dock;
     Lab3Dock *lab3Dock;
     Lab4Dock *lab4Dock;
+    Lab5Dock *lab5Dock;
 
     Invoker *invoker;
 

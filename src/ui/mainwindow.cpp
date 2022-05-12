@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     lab2Dock = new Lab2Dock(renderArea, this);
     lab3Dock = new Lab3Dock(this);
     lab4Dock = new Lab4Dock(invoker, this);
+    lab5Dock = new Lab5Dock(invoker, this);
 
 
     setNeededDocks();
@@ -215,6 +216,14 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     renderArea->setMousePress(event->pos());
+
+    if (!lab5Dock->isHidden())
+    {
+        int x = event->pos().x() - centralWidget()->size().width() / 2 - 280;
+        int y = -event->pos().y() + centralWidget()->size().height() / 2;
+
+        invoker->addPoint(x, y);
+    }
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *)
@@ -446,6 +455,12 @@ void MainWindow::setNeededDocks()
     // lab_04
 
     addDockWidget(Qt::LeftDockWidgetArea, lab4Dock);
+
+    lab4Dock->hide();
+
+    // lab_05
+
+    addDockWidget(Qt::LeftDockWidgetArea, lab5Dock);
 
     // common
     addDockWidget(Qt::RightDockWidgetArea, scaleDock);
