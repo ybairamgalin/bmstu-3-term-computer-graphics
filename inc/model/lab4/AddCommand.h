@@ -16,7 +16,7 @@ namespace Lab4
                           RenderArea *canvas)
                 : ellipse(ellipse), canvas(canvas) { };
 
-        void execute() const override
+        void execute() override
         {
             canvas->add(ellipse);
         }

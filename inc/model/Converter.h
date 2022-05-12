@@ -1,7 +1,3 @@
-//
-// Created by Yaroslav Bairamgalin on 05.05.2022.
-//
-
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
